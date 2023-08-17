@@ -28,4 +28,4 @@ is adapted to 3 types of screen: mobile, tablet and desktop.
 
 ##
 
-Developed by Nadiia Khoptiuk
+Developed by Ihor Savchuk
