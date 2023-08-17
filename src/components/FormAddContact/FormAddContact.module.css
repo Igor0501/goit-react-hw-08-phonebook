@@ -1,0 +1,76 @@
+.form {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.labelText {
+  color: inherit;
+  transition: all 200ms ease-in-out;
+}
+
+.labelText:hover {
+  color: var(--accent-color);
+}
+
+.input {
+  width: 100%;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+
+  color: var(--main-text-color);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 200ms ease-in-out;
+}
+
+.input:hover,
+.input:focus {
+  color: var(--accent-color);
+  background-color: transparent;
+  border-color: var(--accent-color);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 20px;
+
+  font-size: 18px;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+
+  transform: scale(1);
+  transition: all 200ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.05);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn:hover .addContactIcon,
+.btn:focus .addContactIcon {
+  color: var(--accent-color);
+}
+
+.addContactIcon {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  color: var(--icon-color);
+
+  transition: color 200ms linear;
+}
