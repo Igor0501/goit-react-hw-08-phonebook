@@ -1,0 +1,36 @@
+.inputLabel {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  transition: all 200ms ease-in-out;
+}
+
+.inputLabel:hover,
+.inputLabel:focus-within {
+  color: var(--accent-color);
+}
+
+.filterInput {
+  padding: 10px 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+
+  color: var(--main-text-color);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 200ms ease-in-out;
+}
+
+.filterInput:hover,
+.filterInput:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.notification {
+  text-align: center;
+  color: var(--border-color);
+}
