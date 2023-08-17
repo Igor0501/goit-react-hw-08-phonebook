@@ -1,0 +1,52 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.avatar {
+  height: 30px !important;
+  width: 30px !important;
+  margin-right: 10px;
+
+  font-size: 15px !important;
+  background-color: var(--accent-color) !important;
+}
+
+.welcomeText {
+  display: none;
+}
+
+.btnLogOut {
+  padding: 10px 15px !important;
+  line-height: 1 !important;
+
+  color: var(--main-text-color) !important;
+  font-weight: 400 !important;
+  border: 1px solid var(--border-color) !important;
+  transform: scale(1);
+  transition: all 200ms ease-in-out !important;
+}
+
+.btnLogOut:hover,
+.btnLogOut:focus {
+  transform: scale(1.1);
+  color: var(--accent-color) !important;
+  border: 1px solid var(--accent-color) !important;
+}
+
+@media screen and (min-width: 480px) {
+  .userMenu {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .welcomeText {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    margin-right: 20px;
+  }
+}
