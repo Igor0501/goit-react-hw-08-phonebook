@@ -1,31 +1,31 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.c79dcc66.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.05777486.js",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.acc213e1.css",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.b1ab99a1.js",
     "contacts.css": "/goit-react-hw-08-phonebook/static/css/contacts.e2705b71.chunk.css",
-    "contacts.js": "/goit-react-hw-08-phonebook/static/js/contacts.5a879e9d.chunk.js",
+    "contacts.js": "/goit-react-hw-08-phonebook/static/js/contacts.38bdc2c7.chunk.js",
     "registration.css": "/goit-react-hw-08-phonebook/static/css/registration.23326601.chunk.css",
-    "registration.js": "/goit-react-hw-08-phonebook/static/js/registration.005e4229.chunk.js",
-    "authorization.css": "/goit-react-hw-08-phonebook/static/css/authorization.cb87b5f7.chunk.css",
-    "authorization.js": "/goit-react-hw-08-phonebook/static/js/authorization.7928bd64.chunk.js",
+    "registration.js": "/goit-react-hw-08-phonebook/static/js/registration.d2c2cd24.chunk.js",
+    "authorization.css": "/goit-react-hw-08-phonebook/static/css/authorization.7ad59e23.chunk.css",
+    "authorization.js": "/goit-react-hw-08-phonebook/static/js/authorization.81db3c0b.chunk.js",
     "modal-wdw.css": "/goit-react-hw-08-phonebook/static/css/modal-wdw.de4fbb36.chunk.css",
-    "modal-wdw.js": "/goit-react-hw-08-phonebook/static/js/modal-wdw.9cedb80e.chunk.js",
-    "static/js/483.84fd8701.chunk.js": "/goit-react-hw-08-phonebook/static/js/483.84fd8701.chunk.js",
+    "modal-wdw.js": "/goit-react-hw-08-phonebook/static/js/modal-wdw.36ab4bbd.chunk.js",
+    "static/js/471.349dd114.chunk.js": "/goit-react-hw-08-phonebook/static/js/471.349dd114.chunk.js",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "main.c79dcc66.css.map": "/goit-react-hw-08-phonebook/static/css/main.c79dcc66.css.map",
-    "main.05777486.js.map": "/goit-react-hw-08-phonebook/static/js/main.05777486.js.map",
+    "main.acc213e1.css.map": "/goit-react-hw-08-phonebook/static/css/main.acc213e1.css.map",
+    "main.b1ab99a1.js.map": "/goit-react-hw-08-phonebook/static/js/main.b1ab99a1.js.map",
     "contacts.e2705b71.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/contacts.e2705b71.chunk.css.map",
-    "contacts.5a879e9d.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/contacts.5a879e9d.chunk.js.map",
+    "contacts.38bdc2c7.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/contacts.38bdc2c7.chunk.js.map",
     "registration.23326601.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/registration.23326601.chunk.css.map",
-    "registration.005e4229.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/registration.005e4229.chunk.js.map",
-    "authorization.cb87b5f7.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/authorization.cb87b5f7.chunk.css.map",
-    "authorization.7928bd64.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/authorization.7928bd64.chunk.js.map",
+    "registration.d2c2cd24.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/registration.d2c2cd24.chunk.js.map",
+    "authorization.7ad59e23.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/authorization.7ad59e23.chunk.css.map",
+    "authorization.81db3c0b.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/authorization.81db3c0b.chunk.js.map",
     "modal-wdw.de4fbb36.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/modal-wdw.de4fbb36.chunk.css.map",
-    "modal-wdw.9cedb80e.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/modal-wdw.9cedb80e.chunk.js.map",
-    "483.84fd8701.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/483.84fd8701.chunk.js.map"
+    "modal-wdw.36ab4bbd.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/modal-wdw.36ab4bbd.chunk.js.map",
+    "471.349dd114.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/471.349dd114.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c79dcc66.css",
-    "static/js/main.05777486.js"
+    "static/css/main.acc213e1.css",
+    "static/js/main.b1ab99a1.js"
   ]
 }
