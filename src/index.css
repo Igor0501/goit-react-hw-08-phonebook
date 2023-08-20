@@ -119,7 +119,7 @@ button {
   text-align: center;
   border: none;
   background-size: 300% 100%;
-  border-radius: 5px;
+  border-radius: 50px;
   moz-transition: all .4s ease-in-out;
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;

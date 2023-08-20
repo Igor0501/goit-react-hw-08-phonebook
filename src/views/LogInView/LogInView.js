@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react'; // Import useEffect and useState
 import { useDispatch, useSelector } from 'react-redux';
-import { TextField, IconButton } from '@mui/material';
+import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Section from 'components/Section';
 import useFormFields from 'hooks/useFormFields';
 import { logIn } from 'redux/auth/authOperations';
@@ -21,15 +19,42 @@ export default function LogInView() {
     state: userEmail,
     handleChange: handleUserEmailChange,
   } = useFormFields('');
-  const [userPassword, setUserPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const {
+    state: userPassword,
+    handleChange: handleUserPasswordChange,
+  } = useFormFields('');
   const error = useSelector(getError);
+
+  // State to track if the user wants to close the modal
+  const [confirmClose, setConfirmClose] = useState(false);
+
+  // Listen for the escape key press
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setConfirmClose(true);
+      }
+    };
+    
+    window.addEventListener('keydown', handleEscape);
+    
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
 
   const handleLogInSubmit = evt => {
     evt.preventDefault();
 
     dispatch(logIn({ email: userEmail, password: userPassword }));
-    setUserPassword('');
+  };
+
+  const handleCloseModal = () => {
+    if (confirmClose) {
+    
+      dispatch(resetError()); 
+      setConfirmClose(false); 
+    }
   };
 
   return (
@@ -45,36 +70,25 @@ export default function LogInView() {
           value={userEmail}
           onChange={handleUserEmailChange}
         />
-        <div className={s.passwordInputContainer}>
-          <TextField
-            id="outlined-basic"
-            label="Password:"
-            variant="outlined"
-            type={showPassword ? 'text' : 'password'}
-            required
-            className={`${s.input} ${s.passwordInput}`}
-            value={userPassword}
-            onChange={e => setUserPassword(e.target.value)}
-          />
-          <IconButton
-            aria-label="toggle password visibility"
-            onClick={() => setShowPassword(!showPassword)}
-            className={s.showPasswordButton}
-          >
-            {showPassword ? <VisibilityOff className={s.showPasswordIcon} /> : <Visibility className={s.showPasswordIcon} />}
-          </IconButton>
-        </div>
-        <div className={s.formActions}> {/* Додайте новий блок для кнопки Log In */}
-          <Button
-            variant="contained"
-            type="submit"
-            disabled={!userEmail || userPassword.length < 7 ? true : false}
-            className={s.registerBtn}
-            endIcon={<SendIcon />}
-          >
-            Log In
-          </Button>
-        </div>
+        <TextField
+          id="outlined-basic"
+          label="Password:"
+          variant="outlined"
+          type="password"
+          required
+          className={s.input}
+          value={userPassword}
+          onChange={handleUserPasswordChange}
+        />
+        <Button
+          variant="contained"
+          type="submit"
+          disabled={!userEmail || userPassword.length < 7}
+          className={s.registerBtn}
+          endIcon={<SendIcon />}
+        >
+          Log In
+        </Button>
       </form>
       {error && (
         <Stack
@@ -85,27 +99,33 @@ export default function LogInView() {
             backgroundColor: '#fff',
           }}
           spacing={2}
+          onClick={() => setConfirmClose(true)} // Open confirmation on overlay click
         >
           <Alert
             severity="error"
             variant="outlined"
-            onClose={() => {
-              dispatch(resetError());
-            }}
+            onClose={() => setConfirmClose(true)} // Open confirmation when closing alert
             action={
               <Button
                 color="inherit"
                 size="small"
-                onClick={() => {
-                  dispatch(resetError());
-                }}
+                onClick={handleCloseModal}
               >
-                Close
+                Confirm Close
               </Button>
             }
           >
             {error}
           </Alert>
+          {confirmClose && (
+            <Button
+              color="inherit"
+              size="small"
+              onClick={handleCloseModal}
+            >
+              Confirm Close
+            </Button>
+          )}
         </Stack>
       )}
     </Section>
