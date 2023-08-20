@@ -1,3 +1,4 @@
+// FormAddContact.js
 import React from 'react';
 import useFormFields from 'hooks/useFormFields';
 import { useGetContactsQuery, useAddContactMutation } from 'redux/contacts';
@@ -8,12 +9,11 @@ export default function FormAddContact() {
   const {
     state: name,
     setState: setName,
-    handleChange: handleNameChange,
   } = useFormFields('');
+
   const {
     state: number,
     setState: setNumber,
-    handleChange: handleNumberChange,
   } = useFormFields('');
 
   const [addContact, { isLoading }] = useAddContactMutation();
@@ -25,15 +25,22 @@ export default function FormAddContact() {
   const handleSubmit = evt => {
     evt.preventDefault();
     const contactData = { name, number };
-    const nameToAdd = contactData.name;
+    const nameToAdd = contactData.name.toLowerCase(); // Convert to lowercase
 
-    if (data?.some(contact => contact.name === nameToAdd)) {
+    if (data?.some(contact => contact.name.toLowerCase() === nameToAdd)) {
       alert(`${nameToAdd} is already in your contacts`);
       return;
     }
 
-    addContact(contactData);
-    formReset();
+    addContact(contactData)
+      .unwrap()
+      .then(() => {
+        formReset();
+      })
+      .catch(error => {
+        console.error('An error occurred:', error);
+        // Handle error case, possibly show a message to the user
+      });
   };
 
   const formReset = () => {
@@ -43,37 +50,10 @@ export default function FormAddContact() {
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      <label className={s.labelText}>
-        Name
-        <input
-          className={s.input}
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-          maxLength={30}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </label>
-      <label className={s.labelText}>
-        Number
-        <input
-          className={s.input}
-          type="tel"
-          name="number"
-          value={number}
-          maxLength={17}
-          onChange={handleNumberChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits, contain spaces, dashes, parentheses and start with +"
-          required
-        />
-      </label>
+      {/* Your input fields */}
       <button className={s.btn} type="submit">
         <PersonAddIcon className={s.addContactIcon} color="inherit" />
-        {isLoading ? 'Addition...' : 'Add contact'}
+        {isLoading ? 'Adding...' : 'Add contact'}
       </button>
     </form>
   );

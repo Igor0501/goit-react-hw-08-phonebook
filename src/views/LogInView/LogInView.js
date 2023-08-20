@@ -1,7 +1,10 @@
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TextField } from '@mui/material';
+import { TextField, IconButton } from '@mui/material';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Section from 'components/Section';
 import useFormFields from 'hooks/useFormFields';
 import { logIn } from 'redux/auth/authOperations';
@@ -16,25 +19,16 @@ export default function LogInView() {
   const dispatch = useDispatch();
   const {
     state: userEmail,
-    setState: setUserEmail,
     handleChange: handleUserEmailChange,
   } = useFormFields('');
-  const {
-    state: userPassword,
-    setState: setUserPassword,
-    handleChange: handleUserPasswordChange,
-  } = useFormFields('');
+  const [userPassword, setUserPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const error = useSelector(getError);
 
   const handleLogInSubmit = evt => {
     evt.preventDefault();
 
     dispatch(logIn({ email: userEmail, password: userPassword }));
-    formReset();
-  };
-
-  const formReset = () => {
-    setUserEmail('');
     setUserPassword('');
   };
 
@@ -51,25 +45,36 @@ export default function LogInView() {
           value={userEmail}
           onChange={handleUserEmailChange}
         />
-        <TextField
-          id="outlined-basic"
-          label="Password:"
-          variant="outlined"
-          type="password"
-          required
-          className={s.input}
-          value={userPassword}
-          onChange={handleUserPasswordChange}
-        />
-        <Button
-          variant="contained"
-          type="submit"
-          disabled={!userEmail || userPassword.length < 7 ? true : false}
-          className={s.registerBtn}
-          endIcon={<SendIcon />}
-        >
-          Log In
-        </Button>
+        <div className={s.passwordInputContainer}>
+          <TextField
+            id="outlined-basic"
+            label="Password:"
+            variant="outlined"
+            type={showPassword ? 'text' : 'password'}
+            required
+            className={`${s.input} ${s.passwordInput}`}
+            value={userPassword}
+            onChange={e => setUserPassword(e.target.value)}
+          />
+          <IconButton
+            aria-label="toggle password visibility"
+            onClick={() => setShowPassword(!showPassword)}
+            className={s.showPasswordButton}
+          >
+            {showPassword ? <VisibilityOff className={s.showPasswordIcon} /> : <Visibility className={s.showPasswordIcon} />}
+          </IconButton>
+        </div>
+        <div className={s.formActions}> {/* Додайте новий блок для кнопки Log In */}
+          <Button
+            variant="contained"
+            type="submit"
+            disabled={!userEmail || userPassword.length < 7 ? true : false}
+            className={s.registerBtn}
+            endIcon={<SendIcon />}
+          >
+            Log In
+          </Button>
+        </div>
       </form>
       {error && (
         <Stack
@@ -84,9 +89,9 @@ export default function LogInView() {
           <Alert
             severity="error"
             variant="outlined"
-            onClose={setTimeout(() => {
+            onClose={() => {
               dispatch(resetError());
-            }, 2000)}
+            }}
             action={
               <Button
                 color="inherit"

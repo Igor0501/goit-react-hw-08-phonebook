@@ -19,3 +19,34 @@
   width: max-content;
   padding: 10px 20px !important;
 }
+
+
+
+.passwordInputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.showPasswordButton {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.passwordInputContainer:hover .showPasswordButton {
+  opacity: 1;
+}
+
+.showPasswordIcon {
+ 
+}
